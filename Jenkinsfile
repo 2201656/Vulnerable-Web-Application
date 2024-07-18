@@ -24,7 +24,8 @@ pipeline {
                         -Dsonar.projectKey=OWASP \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=${env.SONARQUBE_SERVER} \
-                        -Dsonar.login=${env.SONARQUBE_TOKEN}
+                        -Dsonar.login=${env.SONARQUBE_TOKEN} \
+                        -Dsonar.verbose=true -X
                         """
                     }
                 }
