@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         // Define the SonarQube server URL and token
-        SONARQUBE_SERVER = 'http://172.31.144.1:9000/'
-        SONARQUBE_TOKEN = 'sqp_c6ebe12150c76d10cb0a12c2dede396be0ad9b4'
+        SONARQUBE_SERVER = 'http://192.168.50.182:9000/'
+        SONARQUBE_TOKEN = 'sqp_11eadc85fee877e3ba8673fe422f374dfae83b00'
     }
     
     stages {
