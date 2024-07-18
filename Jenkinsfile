@@ -34,8 +34,6 @@ pipeline {
     
     post {
         always {
-            // Ensure the 'recordIssues' step is inside a 'node' block with a label or 'any'
-            node('docker') { // Replace 'docker' with an appropriate agent label or use 'any'
                 recordIssues enabledForFailure: true, tool: sonarQube()
             }
         }
