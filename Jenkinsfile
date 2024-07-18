@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         // Define the SonarQube server URL and token
-        SONARQUBE_SERVER = 'http://localhost:9000' // Replace with your SonarQube server URL
-        SONARQUBE_TOKEN = credentials('sqp_c6ebe12150c76d10cb0a12c2dede396be0ad9b4') // Replace with the ID of your SonarQube token credential in Jenkins
+        SONARQUBE_SERVER = 'http://localhost:9000' // Adjusted SonarQube server URL
+        SONARQUBE_TOKEN = 'sqp_c6ebe12150c76d10cb0a12c2dede396be0ad9b4' // SonarQube token
     }
     
     stages {
@@ -34,7 +34,10 @@ pipeline {
     
     post {
         always {
-            recordIssues enabledForFailure: true, tool: sonarQube()
+            // Ensure the 'recordIssues' step is inside a 'node' block
+            node {
+                recordIssues enabledForFailure: true, tool: sonarQube()
+            }
         }
     }
 }
