@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         // Define the SonarQube server URL and token
-        SONARQUBE_SERVER = 'http://localhost:9000' // Adjusted SonarQube server URL
-        SONARQUBE_TOKEN = 'sqp_c6ebe12150c76d10cb0a12c2dede396be0ad9b4' // SonarQube token
+        SONARQUBE_SERVER = 'http://localhost:9000'
+        SONARQUBE_TOKEN = 'sqp_c6ebe12150c76d10cb0a12c2dede396be0ad9b4'
     }
     
     stages {
@@ -34,12 +34,9 @@ pipeline {
     
     post {
         always {
-            // Ensure the 'recordIssues' step is inside a 'node' block with a label
-            node {
-                // Specify a label or use 'any' if you want to run on any available agent
-                // Example: node('docker') {
+            // Ensure the 'recordIssues' step is inside a 'node' block with a label or 'any'
+            node('docker') { // Replace 'docker' with an appropriate agent label or use 'any'
                 recordIssues enabledForFailure: true, tool: sonarQube()
-                // }
             }
         }
     }
