@@ -34,9 +34,12 @@ pipeline {
     
     post {
         always {
-            // Ensure the 'recordIssues' step is inside a 'node' block
+            // Ensure the 'recordIssues' step is inside a 'node' block with a label
             node {
+                // Specify a label or use 'any' if you want to run on any available agent
+                // Example: node('docker') {
                 recordIssues enabledForFailure: true, tool: sonarQube()
+                // }
             }
         }
     }
