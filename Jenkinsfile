@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         // Define the SonarQube server URL and token
-        SONARQUBE_SERVER = 'http://192.168.50.182:9000/'
-        SONARQUBE_TOKEN = 'sqp_11eadc85fee877e3ba8673fe422f374dfae83b00'
+        SONARQUBE_SERVER = 'http://localhost:9000/'
+        SONARQUBE_TOKEN = 'sqp_a1a3c0ce38d28d8e7cd1125981a488a26eca0861'
     }
     
     stages {
@@ -17,8 +17,8 @@ pipeline {
         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
-                    def scannerHome = tool 'SonarQube';
-                    withSonarQubeEnv('SonarQube') {
+                    def scannerHome = tool 'SonarDocker';
+                    withSonarQubeEnv('SonarDocker') {
                         sh """
                         ${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectKey=OWASP \
